@@ -1,0 +1,5 @@
+{
+  "name": "Lucky Draw",
+  "description": "A fresh blue, anime-style Gachapon machine that draws unique numbers between 1 and 20 with Spirit Ball animations.",
+  "requestFramePermissions": []
+}
