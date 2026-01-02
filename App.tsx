@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { MachineState } from './types';
-import Machine from './components/Machine';
-import ResultModal from './components/ResultModal';
+import { MachineState } from './types.ts';
+import Machine from './components/Machine.tsx';
+import ResultModal from './components/ResultModal.tsx';
 import { Settings, Users, Hash } from 'lucide-react';
 
 // Define the presets based on user request

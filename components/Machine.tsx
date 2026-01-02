@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { MachineState, Ball } from '../types';
+import { MachineState, Ball } from '../types.ts';
 
 interface MachineProps {
   state: MachineState;
