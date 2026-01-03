@@ -627,7 +627,6 @@ const ResultModal: React.FC<ResultModalProps> = ({ number, color, maxNumber, onC
         {/* Large Number Display below animation */}
         <div className={`mt-24 mb-6 transition-all duration-500 delay-500 transform ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
              <div className="flex flex-col items-center">
-                <div className="text-white font-bold text-xl mb-1 shadow-black drop-shadow-md">You got</div>
                 <div className={`bg-amber-100 px-12 py-4 rounded-3xl border-[6px] ${creature.border} shadow-[0_0_30px_rgba(255,255,255,0.6)] flex items-center justify-center min-w-[160px]`}>
                      <span className="text-6xl font-black text-slate-800 tracking-tighter">
                         {number}
