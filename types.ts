@@ -12,6 +12,10 @@ export interface Ball {
   x: number;
   y: number;
   rotation: number;
+  // Animation props
+  animationName: string;
+  animationDuration: string;
+  animationDelay: string;
 }
 
 export const BALL_COLORS = [

@@ -9,17 +9,21 @@ interface MachineProps {
 }
 
 const Machine: React.FC<MachineProps> = ({ state, onStart, droppedBallColor, disabled }) => {
-  // Generate random static balls for the container - Increased count significantly
+  // Generate random static balls for the container with animation parameters
   const staticBalls = useMemo<Ball[]>(() => {
     const pokeColors = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-yellow-400', 'bg-pink-500'];
+    const animations = ['tumble-1', 'tumble-2', 'tumble-3'];
     
-    // Increased from 12 to 28 for a fuller look
+    // Increased count for fuller look
     return Array.from({ length: 28 }).map((_, i) => ({
       id: i,
       color: pokeColors[i % pokeColors.length],
-      x: 5 + Math.random() * 85, // % position
-      y: 15 + Math.random() * 65, // % position
+      x: 10 + Math.random() * 75, // Avoid edges slightly so animation doesn't clip too much
+      y: 20 + Math.random() * 55, 
       rotation: Math.random() * 360,
+      animationName: animations[Math.floor(Math.random() * animations.length)],
+      animationDuration: `${2 + Math.random() * 4}s`, // Random speed between 2s and 6s
+      animationDelay: `${Math.random() * -5}s`, // Negative delay to start at random points in cycle
     }));
   }, []);
 
@@ -77,11 +81,12 @@ const Machine: React.FC<MachineProps> = ({ state, onStart, droppedBallColor, dis
                 <div key={ball.id} className="absolute" style={{
                     left: `${ball.x}%`,
                     top: `${ball.y}%`,
-                    transform: `scale(0.85)`, // Slightly smaller to fit more
-                    transition: 'top 0.5s ease, transform 0.5s ease',
-                    zIndex: Math.floor(ball.y) // Simple depth sorting based on Y
+                    transform: `scale(0.85) rotate(${ball.rotation}deg)`,
+                    zIndex: Math.floor(ball.y),
+                    // Apply continuous bouncing animation
+                    animation: `${ball.animationName} ${ball.animationDuration} ease-in-out infinite alternate ${ball.animationDelay}`
                 }}>
-                    {renderSpiritBall(ball.color, "", { transform: `rotate(${ball.rotation}deg)` })}
+                    {renderSpiritBall(ball.color)}
                 </div>
              ))}
              
